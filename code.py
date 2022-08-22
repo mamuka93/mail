@@ -1,19 +1,33 @@
 import yagmail
 
 
-sender = 'testusermamuka@gmail.com'
-password = 'wwkpaokwxozpuoma'
-
-receiver = input("Sheiyvanet maili: ")
-
-subject = input("Sheiyvanet subject: ")
-content = input("Sheiyvanet risi gagzavnac gindat: ")
+baza = {}
 
 
 
-yag = yagmail.SMTP(sender, password)
+
+sender = input("Sheiyvanet maili: ")
+
+if sender not in baza:
+
+    password = input("\nSheiyvanet paroli: ")
+
+    baza[sender] = password
+
+
+
+receiver = input("\nSheiyvanet adresati: ")
+
+subject = input("\nSheiyvanet subject: ")
+content = input("\nSheiyvanet risi gagzavnac gindat: ")
+
+
+
+yag = yagmail.SMTP(sender, baza[sender])
 yag.send(receiver, subject, content)
 
 
 print("maili warmatebit gaigzavna!")
 
+
+input()
